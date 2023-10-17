@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        
+        <title>SQLite · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <style class="anchorjs"></style><link rel="stylesheet" href="./SQLite · GitBook_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./SQLite · GitBook_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./SQLite · GitBook_files/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="./SQLite · GitBook_files/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="./SQLite · GitBook_files/website(1).css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="./SQLite · GitBook_files/website(2).css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://docs.cocos2d-x.org/cocos2d-x/v3/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://docs.cocos2d-x.org/cocos2d-x/v3/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/">
+    
+    
+    <link rel="prev" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/shaders.html">
+    
+
+    <style id="mttstyle">
+    #mttContainer {
+      left: 0 !important;
+      top: 0 !important;
+      width: 1000px !important;
+      margin-left: -500px !important;
+      position: fixed !important;
+      z-index: 100000200 !important;
+      background: none !important;
+      pointer-events: none !important;
+      display: inline-block !important;
+    }
+    .bootstrapiso .tooltip {
+      width:auto  !important;
+      height:auto  !important;
+      background: none !important;
+      border:none !important;
+      border-radius: 0px !important;
+      visibility: visible  !important;
+      pointer-events: none !important;
+    }
+    .bootstrapiso  .bs-tooltip-top { 
+      margin-bottom: 15px  !important;
+    }
+    .bootstrapiso  .bs-tooltip-bottom { 
+      margin-top: 15px  !important;
+    }
+    .bootstrapiso .tooltip-inner {
+      font-size: 14px  !important;
+      max-width: 200px  !important;
+      text-align: center !important;
+      backdrop-filter: blur(4px) !important; 
+      background-color: #000000b8 !important;
+      color: #ffffffff !important;
+      pointer-events: auto;
+    }
+    .bootstrapiso .arrow::before {
+      border-top-color: #000000b8 !important;
+    }
+    .bootstrapiso .arrow {
+      font-size: 14px  !important;
+      margin: auto  !important;
+    }
+    .bootstrapiso .arrow::after {
+      display:none !important;
+    }
+    .ocr_text_div{
+      position: absolute;
+      opacity: 0.7;
+      font-size: calc(100% + 1cqw);
+      overflow: hidden;
+      border: 2px solid CornflowerBlue;
+      color: transparent !important;
+      background: none !important;
+    }
+
+    </style></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+    <nav role="navigation" class="autoshow">
+        <ul class="summary">
+        <li><a href="https://cocos2d-x.org/" class="btn" target="_blank"><img src="./SQLite · GitBook_files/logo.png" height="30"></a></li>
+        <li><a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#" class="btn" onclick="toggleLanguage()">中文</a></li>
+        
+        
+        <li class="version-link">
+            <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#" class="btn" style="color:#444">Version: <span style="font-weight: bold; display: inline">3.x</span></a>
+            <ul class="hovershow">
+                
+                <li><a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/" class="btn">Version: <span style="font-weight:bold; display: inline">3.x</span></a></li>
+                
+                <li><a href="https://docs.cocos2d-x.org/cocos2d-x/v4/en/" class="btn">Version: <span style="font-weight:bold; display: inline">4.x</span></a></li>
+                
+            </ul>
+        </li>
+        
+        
+        
+        
+        <li><a href="https://docs.cocos2d-x.org/api-ref/index.html" class="btn"><i class="fa fa-book"></i>API Reference</a></li>
+        
+    
+        
+        <li>
+            <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#" class="btn"><i class="fa fa-book"></i>Cocos Creator</a>
+            <ul>
+                
+                <li><a href="https://docs.cocos2d-x.org/creator/manual/" class="btn">Manual</a></li>
+                
+                <li><a href="https://docs.cocos2d-x.org/creator/api/" class="btn">API</a></li>
+                
+            </ul>
+        </li>
+        
+    
+        </ul>
+    </nav>
+    
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../about/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/about/getting_started.html">
+            
+                    
+                    About Cocos2d-x
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../about/why.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/about/why.html">
+            
+                    
+                    Why Cocos2d-x
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../about/learn.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/about/learn.html">
+            
+                    
+                    How to learn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../about/help.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/about/help.html">
+            
+                    
+                    Where to get help
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="../about/how.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/about/how.html">
+            
+                    
+                    How to contribute
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basic_concepts/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/">
+            
+                    
+                    Basic Cocos2d-x Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../basic_concepts/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/getting_started.html">
+            
+                    
+                    Main Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../basic_concepts/director.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/director.html">
+            
+                    
+                    Director
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../basic_concepts/scene.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/scene.html">
+            
+                    
+                    Scenes and the Scene graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../basic_concepts/sprites.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/sprites.html">
+            
+                    
+                    Sprites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../basic_concepts/actions.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/actions.html">
+            
+                    
+                    Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../basic_concepts/sequences.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/sequences.html">
+            
+                    
+                    Sequences and Spawns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../basic_concepts/parent_child.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/parent_child.html">
+            
+                    
+                    Parent Child Relationship
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../basic_concepts/logging.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/basic_concepts/logging.html">
+            
+                    
+                    Logging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../sprites/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/">
+            
+                    
+                    Sprites
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../sprites/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/getting_started.html">
+            
+                    
+                    What are Sprites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../sprites/creating.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/creating.html">
+            
+                    
+                    Creating Sprites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../sprites/spritesheets.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/spritesheets.html">
+            
+                    
+                    Spritesheets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../sprites/spriteframe_cache.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/spriteframe_cache.html">
+            
+                    
+                    SpriteFrame Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../sprites/manipulation.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/manipulation.html">
+            
+                    
+                    Sprite Manipulation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../sprites/polygon.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/sprites/polygon.html">
+            
+                    
+                    Polygon Sprite
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../actions/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/actions/">
+            
+                    
+                    Actions
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../actions/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/actions/getting_started.html">
+            
+                    
+                    What are Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../actions/basic.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/actions/basic.html">
+            
+                    
+                    Basic Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../actions/sequences.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/actions/sequences.html">
+            
+                    
+                    Sequences
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../actions/sequence_internals.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/actions/sequence_internals.html">
+            
+                    
+                    Sequence Internals
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../scenes/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/scenes/">
+            
+                    
+                    Building and Transitioning Scenes
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../scenes/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/scenes/getting_started.html">
+            
+                    
+                    What are Scenes?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../scenes/creating.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/scenes/creating.html">
+            
+                    
+                    Creating Scenes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../scenes/transitioning.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/scenes/transitioning.html">
+            
+                    
+                    Transitioning Scenes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ui_components/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/">
+            
+                    
+                    UI Components
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../ui_components/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/getting_started.html">
+            
+                    
+                    Widgets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../ui_components/labels.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/labels.html">
+            
+                    
+                    Label
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../ui_components/menus.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/menus.html">
+            
+                    
+                    Menu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../ui_components/buttons.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/buttons.html">
+            
+                    
+                    Buttons
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../ui_components/checkboxes.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/checkboxes.html">
+            
+                    
+                    Checkbox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../ui_components/loading_bar.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/loading_bar.html">
+            
+                    
+                    Loading Bar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../ui_components/sliders.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/sliders.html">
+            
+                    
+                    Slider
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../ui_components/textfields.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/ui_components/textfields.html">
+            
+                    
+                    TextField
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../other_node_types/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/other_node_types/">
+            
+                    
+                    Other Node Types
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../other_node_types/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/other_node_types/getting_started.html">
+            
+                    
+                    More than just a Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../other_node_types/tilemap.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/other_node_types/tilemap.html">
+            
+                    
+                    TileMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../other_node_types/particles.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/other_node_types/particles.html">
+            
+                    
+                    Particle System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../other_node_types/parallax.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/other_node_types/parallax.html">
+            
+                    
+                    Parallax
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../event_dispatcher/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/">
+            
+                    
+                    Event Dispatcher
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../event_dispatcher/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/getting_started.html">
+            
+                    
+                    What is the EventDispatch mechanism
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../event_dispatcher/types.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/types.html">
+            
+                    
+                    Types of event listeners
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../event_dispatcher/priority.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/priority.html">
+            
+                    
+                    Events Priority
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../event_dispatcher/touch.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/touch.html">
+            
+                    
+                    Touch Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../event_dispatcher/keyboard.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/keyboard.html">
+            
+                    
+                    Keyboard Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../event_dispatcher/accelerometer.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/accelerometer.html">
+            
+                    
+                    Accelerometer Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../event_dispatcher/mouse.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/mouse.html">
+            
+                    
+                    Mouse Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../event_dispatcher/custom.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/custom.html">
+            
+                    
+                    Creating Custom Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../event_dispatcher/registering.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/event_dispatcher/registering.html">
+            
+                    
+                    Registering Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../3d/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/">
+            
+                    
+                    3D
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../3d/terminology.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/terminology.html">
+            
+                    
+                    Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../3d/sprite3d.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/sprite3d.html">
+            
+                    
+                    Sprite3D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../3d/animation.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/animation.html">
+            
+                    
+                    Animation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../3d/camera.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/camera.html">
+            
+                    
+                    Camera
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../3d/cubemap.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/cubemap.html">
+            
+                    
+                    Cubemap Texture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../3d/skybox.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/skybox.html">
+            
+                    
+                    Skybox
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../3d/lighting.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/lighting.html">
+            
+                    
+                    Lighting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../3d/terrain.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/terrain.html">
+            
+                    
+                    Terrain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../3d/tools.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/tools.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../3d/advanced.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/advanced.html">
+            
+                    
+                    Advanced 3D Topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../scripting/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/scripting/">
+            
+                    
+                    Scripting
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../scripting/script_component.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/scripting/script_component.html">
+            
+                    
+                    Script component
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../physics/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/physics/">
+            
+                    
+                    Physics
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../physics/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/physics/getting_started.html">
+            
+                    
+                    Physics is scary!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../physics/concepts.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/physics/concepts.html">
+            
+                    
+                    Terminology and concepts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../physics/collisions.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/physics/collisions.html">
+            
+                    
+                    Collision
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../physics/queries.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/physics/queries.html">
+            
+                    
+                    Queries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../physics/debugging.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/physics/debugging.html">
+            
+                    
+                    Debugging/Disabling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../audio/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/audio/">
+            
+                    
+                    Audio
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../audio/getting_started.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/audio/getting_started.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../audio/playing.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/audio/playing.html">
+            
+                    
+                    Playing Sound
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../audio/operations.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/audio/operations.html">
+            
+                    
+                    Manipulating Sound
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../audio/advanced.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/audio/advanced.html">
+            
+                    
+                    Advanced Topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../audio/engines.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/audio/engines.html">
+            
+                    
+                    Audio Engines Compared
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="./">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/">
+            
+                    
+                    Advanced Topics
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="filesystem.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/filesystem.html">
+            
+                    
+                    File System Access
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="networking.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/networking.html">
+            
+                    
+                    Networking with HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="oppo.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/oppo.html">
+            
+                    
+                    OPPO Optimizations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="optimizing.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/optimizing.html">
+            
+                    
+                    Optimizing Graphics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="shaders.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/shaders.html">
+            
+                    
+                    Shaders and Materials
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.6" data-path="sqlite.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html">
+            
+                    
+                    SQLite
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../installation/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/">
+            
+                    
+                    Software Installations
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../installation/prerequisites.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/prerequisites.html">
+            
+                    
+                    Prerequisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../installation/Android-Studio.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Android-Studio.html">
+            
+                    
+                    Android
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../installation/Android-Studio.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Android-Studio.html">
+            
+                    
+                    Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.2" data-path="../installation/Android-terminal.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Android-terminal.html">
+            
+                    
+                    Command-line (Deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.3" data-path="../installation/Android-VisualStudio.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Android-VisualStudio.html">
+            
+                    
+                    Visual Studio (Deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.4" data-path="../installation/Android-Eclipse.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Android-Eclipse.html">
+            
+                    
+                    Eclipse (Deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../installation/iOS.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/iOS.html">
+            
+                    
+                    iOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../installation/OSX.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/OSX.html">
+            
+                    
+                    macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="../installation/Linux.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="../installation/Tizen.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Tizen.html">
+            
+                    
+                    Tizen (Deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="../installation/Windows.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.14.7.1" data-path="../installation/Windows.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7.2" data-path="../installation/Windows-Phone.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/Windows-Phone.html">
+            
+                    
+                    Windows Phone (Deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="../installation/CMake-Guide.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/CMake-Guide.html">
+            
+                    
+                    CMake Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../editors_and_tools/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/editors_and_tools/">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../editors_and_tools/cocosCLTool.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/editors_and_tools/cocosCLTool.html">
+            
+                    
+                    Command-Line tool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../editors_and_tools/creator_to_cocos2dx.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/editors_and_tools/creator_to_cocos2dx.html">
+            
+                    
+                    Creator to Cocos2d-x
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../tutorials/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/tutorials/">
+            
+                    
+                    Tutorials
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../tutorials/storing-game-data/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/tutorials/storing-game-data/">
+            
+                    
+                    Storing Game Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="../tutorials/youre-on-camera/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/tutorials/youre-on-camera/">
+            
+                    
+                    You're On Camera
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="../tutorials/dr-mario-style-game.md">
+            
+                <span>
+            
+                    
+                    Dr. Mario in Cocos Creator
+            
+                
+            
+
+            
+        </span></li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../faq/">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/faq/">
+            
+                    
+                    FAQ of Solutions
+            
+                </a>
+            
+
+            
+            <ul class="articles" style="display: none;">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../faq/android.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/faq/android.html">
+            
+                    
+                    Android
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../faq/cmake.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/faq/cmake.html">
+            
+                    
+                    CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../faq/linux.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/faq/linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../faq/macos.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/faq/macos.html">
+            
+                    
+                    MacOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.5" data-path="../faq/windows.html">
+            
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/faq/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="cocos-navbar navbar-collapse" id="navbar" role="navigation">
+    <ul class="nav navbar-nav">
+        <li><a href="https://cocos2d-x.org/" class="btn" target="_blank"><img src="./SQLite · GitBook_files/logo.png" height="30"></a></li>
+        <li><a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#" class="btn autohide" onclick="toggleLanguage()">中文</a></li>
+
+    
+    <li><a href="https://docs.cocos2d-x.org/api-ref/index.html" class="btn autohide"><i class="fa fa-book"></i>API Reference</a></li>
+    
+
+    
+    <li>
+        <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#" class="btn autohide"><i class="fa fa-book"></i>Cocos Creator</a>
+        <ul class="hovershow">
+            
+            <li><a href="https://docs.cocos2d-x.org/creator/manual/" class="btn">Manual</a></li>
+            
+            <li><a href="https://docs.cocos2d-x.org/creator/api/" class="btn">API</a></li>
+            
+        </ul>
+    </li>
+    
+
+
+    
+    <li class="version-link">
+        <a class="btn" style="color:#444">Version: <span style="font-weight:bold">3.x</span></a>
+        <ul class="hovershow">
+            
+            <li><a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/" class="btn">Version: <span style="font-weight:bold">3.x</span></a></li>
+            
+            <li><a href="https://docs.cocos2d-x.org/cocos2d-x/v4/en/" class="btn">Version: <span style="font-weight:bold">4.x</span></a></li>
+            
+        </ul>
+    </li>
+    
+
+    </ul>
+</div>
+<div class="book-header" role="navigation">
+    
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#"><i class="fa fa-align-justify"></i></a><div class="dropdown pull-right js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/">SQLite</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="sqlite">SQLite<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#sqlite" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p><strong>SQLite</strong> is a self-contained SQL database engine. This means there is no server
+involved. <strong>SQLite</strong> runs while your game is running and you write code to connect
+to the database and manipulate its contents. This is by no means a comprehensive
+guide, in fact, we cover 1% of what <strong>SQLite</strong> can do for you. Please read their
+<a href="http://sqlite.org/" target="_blank">website</a> for a lot more detail as to what functionality <strong>SQLIte</strong>
+offers developers.</p>
+<h3 id="getting-started">Getting Started.<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#getting-started" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<p>In-order to use <strong>SQLite</strong> you must download it and add it to your project. Please
+see the <a href="http://sqlite.org/download.html" target="_blank">SQLite Downloads</a> page for more details.
+For our purposes you will just need <strong>sqlite.h</strong> and <strong>sqlite.c</strong> in your project.
+Add these files to your environment and make sure they are part of your build process.</p>
+<h4 id="how-does-sql-work-in-a-game">How Does SQL Work In A Game?<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#how-does-sql-work-in-a-game" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<p>Now that you have <strong>SQLite</strong> you must understand how using a database in your app
+works. There isn't any automatic benefit, unless you code it. There are no wizards
+and no functionality for <em>free</em>. This is hand coded, by you, to meet your specific
+needs. Generally speaking, you will need to evaluate the following:</p>
+<ul>
+<li><p>Does your database already exist?</p>
+<ul>
+<li>Yes? Connect to it.</li>
+<li>No? Create it, probably using <em>create table</em> queries. Then connect to it.</li>
+</ul>
+</li>
+<li><p>Are you connected to the database?</p>
+<ul>
+<li>Yes? Issue queries against it to achieve your goals.</li>
+<li>No? Connect to it, then issue queries against it to achieve your goals.</li>
+</ul>
+</li>
+<li><p>Do you need to update your database based upon player achievements?</p>
+<ul>
+<li>Yes? Run <em>insert/update</em> queries to change the database.</li>
+<li>No? Probably <em>select</em> queries are enough to use the database to drive your game
+play.</li>
+</ul>
+</li>
+<li><p>Is the player done with your game?</p>
+<ul>
+<li>Yes? Make sure to close the database when your game exists. Failure to do so
+may corrupt your database and make it unusable.</li>
+</ul>
+</li>
+</ul>
+<h3 id="basic-database-creation-and-manipulation">Basic Database Creation And Manipulation<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#basic-database-creation-and-manipulation" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<p>Let's cover how to create a simple database, connect to it and then manipulate it.</p>
+<h4 id="creating-a-simple-database">Creating A Simple Database<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#creating-a-simple-database" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<p>In order to use your database, it must exist. <strong>SQLite</strong> is <em>file based</em>. Simply
+creating a new file to house your database is sufficient. Notice that we use a
+<strong>.db</strong> file extension to help notate that this is indeed our database. It is also
+important to understand where the database lives on the players device. When you
+create the database it must be put in a location that the device allows the player
+to write data to. Cocos2d-x helps make this easy with a file system API called
+<code>getWriteablePath()</code>. Here is an example:</p>
+<pre><code class="lang-cpp">sqlite3* pdb;
+
+pdb = <span class="hljs-literal">NULL</span>;
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> dbPath = cocos2d::FileUtils::getInstance()-&gt;getWritablePath() + <span class="hljs-string">"mydatabase.db"</span>;
+
+<span class="hljs-keyword">int</span> result = sqlite3_open(dbPath.c_str(), &amp;pdb);
+
+<span class="hljs-keyword">if</span>(result == SQLITE_OK)
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"open database successful!"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+<span class="hljs-keyword">else</span>
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"open database failed!"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+</code></pre>
+<p>With the database open, you can now use it.</p>
+<h4 id="creating-a-table">Creating A Table<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#creating-a-table" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<p>Databases use tables to store data. You need at least one table in your database.
+The caveat is that you must know what data your table will contain in-order to create
+it. You can always use the SQL <em>alter table</em> command if at a later tine you need to
+modify your tables structure. This is outside the scope of this document, however.
+Creating a simple table:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> sql;
+
+sql = <span class="hljs-string">"create table "</span> +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(<span class="hljs-string">"Master"</span>) +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(<span class="hljs-string">" (id TEXT PRIMARY KEY, value INT);"</span>);
+
+result = sqlite3_exec(pdb, sql.c_str(), <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);
+
+<span class="hljs-keyword">if</span>(result == SQLITE_OK)
+{
+  <span class="hljs-comment">// table created successfully</span>
+}
+<span class="hljs-keyword">else</span>
+{
+  <span class="hljs-comment">// table was NOT created successfully</span>
+}
+</code></pre>
+<h4 id="querying-data">Querying Data<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#querying-data" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<p>When you want information from your database you must execute a <em>select</em> query to
+get it. A <em>select</em> query is a <em>read-only</em> query. You don't have to worry about
+accidentally modifying your game data when running these types of queries. An example
+<em>select</em> query;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> key = <span class="hljs-string">"Brown"</span>;
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> sql = <span class="hljs-string">"SELECT NAME "</span> +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(<span class="hljs-string">" FROM "</span>) +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(<span class="hljs-string">"Master"</span>) +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(<span class="hljs-string">" WHERE id='"</span>) +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(key.c_str()) +
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>(<span class="hljs-string">"' LIMIT 1;"</span>);
+
+sqlite3_stmt* statement;
+
+<span class="hljs-keyword">if</span> (sqlite3_prepare_v2(&amp;pdb, sql.c_str(), <span class="hljs-number">-1</span>, &amp;statement, <span class="hljs-number">0</span>) == SQLITE_OK)
+{
+  <span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)
+  {
+      result = sqlite3_step(statement);
+
+      <span class="hljs-keyword">if</span>(result == SQLITE_ROW)
+      {
+          <span class="hljs-comment">// do something with the row.</span>
+      }
+      <span class="hljs-keyword">else</span>
+      {
+          <span class="hljs-keyword">break</span>;
+      }
+  }
+}
+</code></pre>
+<h4 id="inserting-data">Inserting Data<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#inserting-data" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<p>You may need to insert data into your database to use again at a later time. Use
+an <em>insert</em> query to do this. Example:</p>
+<pre><code class="lang-cpp">
+
+</code></pre>
+<h4 id="updating-data">Updating Data<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#updating-data" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h4>
+<h3 id="closing-the-database">Closing The Database<a class="anchorjs-link " href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/sqlite.html#closing-the-database" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/advanced_topics/shaders.html" class="navigation navigation-prev " aria-label="Previous page: Shaders and Materials">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://docs.cocos2d-x.org/cocos2d-x/v3/en/installation/" class="navigation navigation-next " aria-label="Next page: Software Installations" style="margin-right: 17px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"SQLite","level":"1.13.6","depth":2,"next":{"title":"Software Installations","level":"1.14","depth":1,"path":"installation/index.md","ref":"installation/index.md","articles":[{"title":"Prerequisites","level":"1.14.1","depth":2,"path":"installation/prerequisites.md","ref":"installation/prerequisites.md","articles":[]},{"title":"Android","level":"1.14.2","depth":2,"path":"installation/Android-Studio.md","ref":"installation/Android-Studio.md","articles":[{"title":"Studio","level":"1.14.2.1","depth":3,"path":"installation/Android-Studio.md","ref":"installation/Android-Studio.md","articles":[]},{"title":"Command-line (Deprecated)","level":"1.14.2.2","depth":3,"path":"installation/Android-terminal.md","ref":"installation/Android-terminal.md","articles":[]},{"title":"Visual Studio (Deprecated)","level":"1.14.2.3","depth":3,"path":"installation/Android-VisualStudio.md","ref":"installation/Android-VisualStudio.md","articles":[]},{"title":"Eclipse (Deprecated)","level":"1.14.2.4","depth":3,"path":"installation/Android-Eclipse.md","ref":"installation/Android-Eclipse.md","articles":[]}]},{"title":"iOS","level":"1.14.3","depth":2,"path":"installation/iOS.md","ref":"installation/iOS.md","articles":[]},{"title":"macOS","level":"1.14.4","depth":2,"path":"installation/OSX.md","ref":"installation/OSX.md","articles":[]},{"title":"Linux","level":"1.14.5","depth":2,"path":"installation/Linux.md","ref":"installation/Linux.md","articles":[]},{"title":"Tizen (Deprecated)","level":"1.14.6","depth":2,"path":"installation/Tizen.md","ref":"installation/Tizen.md","articles":[]},{"title":"Windows","level":"1.14.7","depth":2,"path":"installation/Windows.md","ref":"installation/Windows.md","articles":[{"title":"Windows","level":"1.14.7.1","depth":3,"path":"installation/Windows.md","ref":"installation/Windows.md","articles":[]},{"title":"Windows Phone (Deprecated)","level":"1.14.7.2","depth":3,"path":"installation/Windows-Phone.md","ref":"installation/Windows-Phone.md","articles":[]}]},{"title":"CMake Guide","level":"1.14.8","depth":2,"path":"installation/CMake-Guide.md","ref":"installation/CMake-Guide.md","articles":[]}]},"previous":{"title":"Shaders and Materials","level":"1.13.5","depth":2,"path":"advanced_topics/shaders.md","ref":"advanced_topics/shaders.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","github-issue-feedback-language-custom","search-title","anchorjs","toggle-chapters","sharing"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"search":{"maxIndexSize":1000000000},"lunr":{"maxIndexSize":1000000000},"fontsettings":{"theme":"white","family":"sans","size":2},"search-title":{},"highlight":{},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper"],"douban":false,"facebook":true,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"github-issue-feedback-language-custom":{"repo":"cocos-creator/creator-docs","branch":"master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"index.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"products":[{"name":"API Reference","link":"https://docs.cocos2d-x.org/api-ref/index.html"},{"name":"Cocos Creator","links":[{"name":"Manual","link":"https://docs.cocos2d-x.org/creator/manual/"},{"name":"API","link":"https://docs.cocos2d-x.org/creator/api/"}]}],"version":[{"name":"3.x","links":[{"name":"3.x","link":"https://docs.cocos2d-x.org/cocos2d-x/v3/en/"},{"name":"4.x","link":"https://docs.cocos2d-x.org/cocos2d-x/v4/en/"}]}]},"language":"en","gitbook":"*"},"file":{"path":"advanced_topics/sqlite.md","mtime":"2019-01-03T15:15:01.231Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T17:25:33.241Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="./SQLite · GitBook_files/gitbook.js.download"></script>
+    <script src="./SQLite · GitBook_files/theme.js.download"></script>
+    
+        
+        <script src="./SQLite · GitBook_files/plugin.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/jquery.mark.min.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/search.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/anchor.min.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/anchor-style.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/toggle.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/buttons.js.download"></script>
+        
+    
+        
+        <script src="./SQLite · GitBook_files/fontsettings.js.download"></script>
+        
+    
+
+    <script type="text/javascript">
+    function toggleLanguage () {
+        var path = location.href;
+        // console.log(path);
+        if (path.indexOf('/zh') !== -1) {
+            path = path.replace(/\/zh[\/$\s]/i, '/en/');
+        } else if (path.indexOf('/en') !== -1) {
+            path = path.replace(/\/en[\/$\s]/i, '/zh/');
+        }
+        // console.log('after: ' + path);
+        location.assign(path);
+    }
+    </script>
+
+    
+
+
+<button class="gitbook-plugin-github-issue-feedback-language-custom" style="position:fixed; right:20px;bottom:20px;height:30px">Have Feedback?</button><div id="mttContainer" class="bootstrapiso notranslate" data-html="true" data-original-title="FileUtils" title="" style="transform: translate(471px, 840px);" dir="ltr"></div></body></html>
